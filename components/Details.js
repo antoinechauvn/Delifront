@@ -6,6 +6,19 @@ import CustomButton from './CustomButton';
 
 
 export default function Details({ navigation }) {
+  const jsonData = [
+    {
+      "id": 1,
+      "titre": "Produit A",
+      "prix": 10.99,
+      "catégorie": "Alimentation",
+      "description": "Un délicieux produit qui saura ravir vos papilles.",
+      "allergene": ["gluten", "lactose"]
+    },
+  ];
+  const product = jsonData[0];
+
+
   let [fontsLoaded] = useFonts({
     Montserrat_700Bold,
     Montserrat_500Medium,
@@ -25,30 +38,30 @@ export default function Details({ navigation }) {
 
         <View style={styles.titlesWrapper}>
           <Text style={styles.title}>
-            Nom du Plat
+          {product.titre}
           </Text>
         </View>
 
         <View style={styles.priceWrapper}>
-          <Text style={styles.priceText}>1000€</Text>
+          <Text style={styles.priceText}>{product.prix} €</Text>
         </View>
 
         <View style={styles.infoWrapper}>
           <View style={styles.infoLeftWrapper}>
             <View style={styles.infoItemWrapper}>
               <Text style={styles.infoItemTitle}>Categorie</Text>
-              <Text style={styles.infoItemText}>Pizza</Text>
+              <Text style={styles.infoItemText}>{product.catégorie}</Text>
             </View>
 
             <View style={styles.infoItemWrapper}>
               <Text style={styles.infoItemTitle}>Description</Text>
-              <Text style={styles.infoItemText}>Ceci est une pizza</Text>
+              <Text style={styles.infoItemText}>{product.description}</Text>
             </View>
 
 
             <View style={styles.infoItemWrapper}>
               <Text style={styles.infoItemTitle}>Allergène</Text>
-              <Text style={styles.infoItemText}>Non</Text>
+              <Text style={styles.infoItemText}>{product.allergene.join(', ')}</Text>
             </View>
           </View>
           <View>
@@ -115,8 +128,6 @@ const styles = new StyleSheet.create({
   buyButton: {
     marginHorizontal: 40
   }
-
-
 }
 )
 
