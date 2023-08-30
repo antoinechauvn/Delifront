@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, SafeAreaView, Image} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {  useFonts, Montserrat_700Bold, Montserrat_500Medium } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 import CustomButton from './CustomButton';
+
 
 export default function Details({ navigation }) {
   let [fontsLoaded] = useFonts({
@@ -54,7 +55,7 @@ export default function Details({ navigation }) {
             <Image source={require('../assets/pizza1.png')} style={styles.itemPicture} />
           </View>
         </View>
-        <CustomButton title='Acheter' onPress={() => console.log('Bouton Enregistrer pressé')}>
+        <CustomButton title='Acheter' onPress={() => console.log('Fonction Ajouter')} style={styles.buyButton}>
         </CustomButton>
       </View>
       );
@@ -106,11 +107,15 @@ const styles = new StyleSheet.create({
     fontSize: 20,
   },
   itemPicture: {
-    marginLeft: 30,
-    width: 230, 
-    height: 230,
+    marginLeft: 0,
+    width: 200, 
+    height: 200,
     resizeMode: 'contain',
+  },
+  buyButton: {
+    marginHorizontal: 40
   }
+
 
 }
 )

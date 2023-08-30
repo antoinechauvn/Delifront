@@ -2,10 +2,15 @@ import React from 'react';
 import { Text, StyleSheet, Pressable } from 'react-native';
 
 const CustomButton = (props) => {
-  const { onPress, title = 'Default text' } = props;
-  
+  const { onPress, title = 'Default text', style: customStyle } = props;
+
+  const combinedStyle = React.useMemo(
+    () => [styles.button, customStyle],
+    [customStyle]
+  );
+
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Pressable style={combinedStyle} onPress={onPress}>
       <Text style={styles.text}>{title}</Text>
     </Pressable>
   );
