@@ -12,7 +12,7 @@ export default function Details({ navigation }) {
       "titre": "Produit A",
       "prix": 10.99,
       "catégorie": "Alimentation",
-      "description": "Un délicieux produit qui saura ravir vos papilles.",
+      "description": "Un délicieux produit",
       "allergene": ["gluten", "lactose"]
     },
   ];
