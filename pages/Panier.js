@@ -27,7 +27,7 @@ export default function Panier({ navigation }) {
                   </ScrollView>
               </View>
               <View style={styles.footer}>
-                <Text>Sous-total : 0€</Text>
+                <Text>Sous-total test : 0€</Text>
                 <Button title="Valider" ></Button>
               </View>
           </View>
