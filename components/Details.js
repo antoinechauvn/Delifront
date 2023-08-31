@@ -67,7 +67,7 @@ export default function Details({ navigation }) {
             </View>
           </View>
           <View>
-            <Image source={require('../assets/pizza1.png')} style={styles.itemPicture} />
+            <Image source={require('../assets/plats/pizza1.png')} style={styles.itemPicture} />
           </View>
         </View>
         <CustomButton title='Acheter' onPress={() => console.log('Fonction Ajouter')} style={styles.buyButton}>
