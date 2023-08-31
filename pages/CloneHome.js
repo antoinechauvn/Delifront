@@ -9,7 +9,7 @@ export default function Home({ navigation }) {
         <AppHeader title="TestHome" navigation={navigation} />
         {/* Contenu principal */}
         <View style={{ flex: 1 }}>
-            {/* Liste de restaurants */}
+            {/* Liste des catégories */}
             <View style={{ marginTop: 20 }}>
                 <ItemCategory title="Entrée" imagepath={require('../assets/categories/entree.jpg')}></ItemCategory>
                 <ItemCategory title="Plats" imagepath={require('../assets/categories/plat.jpg')}></ItemCategory>
