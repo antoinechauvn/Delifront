@@ -21,13 +21,12 @@ export default function Panier({ navigation }) {
                         <Text>{r.categorie}</Text>
                         <Text>{r.description}</Text>
                         <Text>{r.description}</Text>
-                        <Image style={styles.productImage} source={require(r.urlImage)}/>
                       </View>
                       })}
                   </ScrollView>
               </View>
               <View style={styles.footer}>
-                <Text>Sous-total test : 0€</Text>
+                <Text>Sous-total : 0€</Text>
                 <Button title="Valider" ></Button>
               </View>
           </View>

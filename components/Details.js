@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {  useFonts, Montserrat_700Bold, Montserrat_500Medium } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 import CustomButton from './CustomButton';
+import AppHeader from '../components/AppHeader';
 
 
 export default function Details({ navigation }) {
@@ -30,6 +31,7 @@ export default function Details({ navigation }) {
 
     return (
       <View style={styles.container}>
+        <AppHeader title="Details" navigation={navigation} />
         <SafeAreaView>
           <View style={styles.headerWrapper}>
 
