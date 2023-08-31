@@ -27,7 +27,7 @@ export default function Home({ navigation }) {
                 <TextInput secureTextEntry={true} style={styles.inputText}></TextInput>
               </View>
               <Button title="Se Connecter" color="red" style={styles.buttonPress}
-              onPress={() => navigation.goBack()}/>
+              onPress={() => navigation.navigate('Home')}/>
           </View>
         </View>
       </ImageBackground>
