@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 import { View, Text, Button, StyleSheet, SafeAreaView, 
     ScrollView, Dimensions } from 'react-native';
 import AppHeader from '../components/AppHeader';
@@ -21,6 +21,7 @@ export default function Panier({ navigation }) {
                         <Text>{r.categorie}</Text>
                         <Text>{r.description}</Text>
                         <Text>{r.description}</Text>
+                        <Image style={styles.productImage} source={require(r.urlImage)}/>
                       </View>
                       })}
                   </ScrollView>
