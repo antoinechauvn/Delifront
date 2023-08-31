@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
    },
   inputText: {
     height: 50,
-    borderRadius: 30,
+    borderRadius: 20,
     width: "100%",
     flex: 1,
     padding: 20,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   inputView: {
     backgroundColor: "white",
-    borderRadius: 30,
+    borderRadius: 20,
     width: "90%",
     height: 50,
     marginBottom: 20,
