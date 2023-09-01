@@ -1,27 +1,30 @@
 import React from 'react';
-import { View, Text, Button, ImageBackground, Dimensions, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import AppHeader from '../components/AppHeader';
-import Plat from '../components/Plat';
+import { Searchbar } from 'react-native-paper';
+import ItemCategory from '../components/ItemCategory';
 
 export default function Home({ navigation }) {
-    const panierJSON = [{"id":5555, "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/pates.jpg")},{"id":5575, "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":6597, "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":6594, "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":6592, "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":6584, "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":6369, "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":6367, "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")}];
-    const hauteur = Dimensions.get('window').height;
+
+    const [searchQuery, setSearchQuery] = React.useState('');
+    const onChangeSearch = query => setSearchQuery(query);
+    const categories = ["Entree","Plat","Dessert","Soupe","Fromage"];
+
     return (
+    <View style={{ flex: 1, backgroundColor: 'white', }}>
+        <AppHeader title="TestHome" navigation={navigation} />
+        <Searchbar placeholder="Search" onChangeText={onChangeSearch} value={searchQuery} />
+        {/* Contenu principal */}
         <View style={{ flex: 1 }}>
-            <AppHeader title="Home" navigation={navigation} />
-
-            {/* Contenu principal */}
-            <View style={{ flex: 1 }}>
-
-                {/* Liste de restaurants */}
-                <View style={{ display:'flex', justifyContent: 'space-between', flexDirection: 'column', height: hauteur/1.09, padding: 20, }}>
-                    <ScrollView>
-                        {panierJSON.map(r => 
-                            <Plat key={r.id} titre={r.titre} prix={r.prix} description={r.description} urlImage={r.urlImage} />
-                        )}
-                    </ScrollView>
-                </View>
+            {/* Liste des catégories */}
+            <View>
+                <ItemCategory title={categories[0]} imagepath={require('../assets/categories/entree.jpg')} onPress={() => { navigation.navigate('Articles');}}></ItemCategory>
+                <ItemCategory title={categories[1]} imagepath={require('../assets/categories/plat.jpg')} onPress={(title) => { alert("Catégorie "+categories[1]+" cliquée !");}}></ItemCategory>
+                <ItemCategory title={categories[2]} imagepath={require('../assets/categories/dessert.png')} onPress={() => { alert('Catégorie cliquée !');}}></ItemCategory>
+                <ItemCategory title={categories[3]} imagepath={require('../assets/categories/soupe.jpg')} onPress={() => { alert('Catégorie cliquée !');}}></ItemCategory>
+                <ItemCategory title={categories[4]} imagepath={require('../assets/categories/fromage.jpg')} onPress={() => { alert('Catégorie cliquée !');}}></ItemCategory>
             </View>
         </View>
+    </View>
     );
 }
