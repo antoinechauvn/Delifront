@@ -20,8 +20,12 @@ export default function ItemArticle({ title, imagepath, onPress }) {
           <Image source={imagepath} style={styles.image} />
         </View>
         {/* Texte pour décrire l'article */}
-        <View style={styles.overlay}>
-          <Text style={styles.articleText}>{title}</Text>
+        <View style={styles.label}>
+          <View style={styles.rowContainer}>
+            <Text style={styles.articleTitle}>Plat: {title}</Text>
+            <Text style={styles.articlePrice}>Prix: 10$</Text>
+          </View>
+          <Text style={styles.articleDesc}>Description: {title}</Text>
         </View>
       </TouchableOpacity>
     </SafeAreaView>
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   rectangle: {
-    margin: 20,
+    marginHorizontal: 20,
     borderRadius: 10,
     overflow: 'hidden',
   },
@@ -43,12 +47,24 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'cover',
   },
-  overlay: {
-    justifyContent: 'center',
-    alignItems: 'center',
+  label: {
+    justifyContent: 'left',
+    marginHorizontal: 20,
   },
-  articleText: {
+  rowContainer: {
+    flexDirection: 'row', // Aligner les éléments horizontalement
+    alignItems: 'center', // Aligner les éléments verticalement au centre
+    justifyContent: 'space-between',
+  },
+  articleTitle: {
     fontFamily: 'Montserrat_700Bold',
-    fontSize: 24,
+    fontSize: 15,
+  },
+  articleDesc: {
+    fontFamily: 'Montserrat_500Medium',
+  },
+  articlePrice: {
+    fontFamily: 'Montserrat_700Bold',
+    fontSize: 15,
   },
 });
