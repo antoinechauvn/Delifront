@@ -3,10 +3,14 @@ import { View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {  useFonts, Montserrat_700Bold, Montserrat_500Medium } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 import CustomButton from './CustomButton';
+import { useCartContext } from '../utils/CartContext';
 import AppHeader from '../components/AppHeader';
 
 
-export default function Details({ navigation }) {
+export default function Details({ navigation, route }) {
+  const { index } = route.params;
+  const { addToCart } = useCartContext();
+
   const jsonData = [
     {
       "id": 1,
@@ -70,7 +74,7 @@ export default function Details({ navigation }) {
             <Image source={require('../assets/plats/pizza1.png')} style={styles.itemPicture} />
           </View>
         </View>
-        <CustomButton title='Acheter' onPress={() => console.log('Fonction Ajouter')} style={styles.buyButton}>
+        <CustomButton title='Acheter' onPress={() => addToCart(product)} style={styles.buyButton}>
         </CustomButton>
       </View>
       );

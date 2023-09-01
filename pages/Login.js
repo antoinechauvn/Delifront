@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, Image, ImageBackground } from 'react-native';
-import { TextInput } from 'react-native-web';
+import { TextInput } from 'react-native';
 import { useFonts, Montserrat_500Medium, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 
@@ -27,7 +27,7 @@ export default function Home({ navigation }) {
                 <TextInput secureTextEntry={true} style={styles.inputText}></TextInput>
               </View>
               <Button title="Se Connecter" color="red" style={styles.buttonPress}
-              onPress={() => navigation.navigate('Home')}/>
+              onPress={() => navigation.navigate('CloneHome')}/>
           </View>
         </View>
       </ImageBackground>
