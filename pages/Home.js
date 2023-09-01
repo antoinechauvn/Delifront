@@ -8,7 +8,7 @@ export default function Home({ navigation }) {
     const hauteur = Dimensions.get('window').height;
     return (
         <View style={{ flex: 1 }}>
-            <AppHeader title="Home Screen" navigation={navigation} />
+            <AppHeader title="Home" navigation={navigation} />
 
             {/* Contenu principal */}
             <View style={{ flex: 1 }}>
