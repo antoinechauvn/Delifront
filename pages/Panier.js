@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, SafeAreaView, ImageBackground,
-    ScrollView, Dimensions } from 'react-native';
+import { View, Text, Button, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import AppHeader from '../components/AppHeader';
-import Plat from '../components/ItemArticle';
+import ItemArticle from '../components/ItemArticle';
 import { useCartContext } from '../utils/CartContext';
 
 const listePanier = ['pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson'];
@@ -10,6 +9,7 @@ const panierJSON = [{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"
 const prixTotal = panierJSON.reduce((total, plat) => total + plat.prix, 0);
 const hauteur = Dimensions.get('window').height;
 console.log(hauteur);
+
 export default function Panier({ navigation }) {
   const { cart, addToCart, removeFromCart } = useCartContext();
   const productCounts = cart.reduce((counts, product) => {
@@ -36,7 +36,7 @@ export default function Panier({ navigation }) {
                       <Plat titre={product.titre} prix={productQuantities[product.id]*product.prix} description={product.description} urlImage={require("../assets/plats/pates.jpg")} quantiti={productQuantities[product.id]} />
                       )}
                       {panierJSON.map(r => 
-                        <Plat titre={r.titre} prix={r.prix} description={r.description} urlImage={r.urlImage} />
+                        <ItemArticle title="Oeuf Mimosa" imagepath={require('../assets/entrees/oeuf.png')} onPress={() => { navigation.navigate('Articles');}}></ItemArticle>
                       )}
                   </ScrollView>
               </View>
