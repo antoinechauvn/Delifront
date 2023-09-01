@@ -1,18 +1,11 @@
 import React from 'react';
-import { View, Text, Button, ImageBackground } from 'react-native';
+import { View, Text, Button, ImageBackground, Dimensions, ScrollView } from 'react-native';
 import AppHeader from '../components/AppHeader';
+import Plat from '../components/Plat';
 
 export default function Home({ navigation }) {
-    const restaurants = [
-        { name: 'Plat 1', description: 'Description du plat 1', image: require('../assets/plats/pates.jpg') },
-        { name: 'Plat 2', description: 'Description du plat 2', image: require('../assets/plats/boeufb.jpeg') },
-        { name: 'Plat 3', description: 'Description du plat 3', image: require('../assets/plats/hamburger.jpeg') },
-        { name: 'Plat 4', description: 'Description du plat 4', image: require('../assets/plats/chilicon.jpeg') },
-        { name: 'Plat 5', description: 'Description du plat 5', image: require('../assets/plats/crepe.png') },
-        { name: 'Plat 6', description: 'Description du plat 6', image: require('../assets/plats/blanquette.png') },
-        // Ajoutez d'autres plats ici
-    ];
-
+    const panierJSON = [{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/pates.jpg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")}];
+    const hauteur = Dimensions.get('window').height;
     return (
         <View style={{ flex: 1 }}>
             <AppHeader title="Home Screen" navigation={navigation} />
@@ -21,28 +14,12 @@ export default function Home({ navigation }) {
             <View style={{ flex: 1 }}>
 
                 {/* Liste de restaurants */}
-                <View style={{ marginTop: 20 }}>
-                    {restaurants.map((restaurant, index) => (
-                        <ImageBackground
-                            key={index}
-                            source={restaurant.image}
-                            blurRadius={3}
-                            style={{
-                                backgroundColor: 'lightgrey',
-                                padding: 40,
-                                borderRadius: 10,
-                                marginBottom: 10,
-                                marginHorizontal: 15,
-                                flexGrow: 1,
-                                resizeMode: 'cover',
-                                overflow: 'hidden',
-                            }}
-                            imageStyle={{ opacity: 0.8 }}
-                        >
-                            <Text>{restaurant.name}</Text>
-                            <Text>{restaurant.description}</Text>
-                        </ImageBackground>
-                    ))}
+                <View style={{ display:'flex', justifyContent: 'space-between', flexDirection: 'column', height: hauteur/1.09, padding: 20, }}>
+                    <ScrollView>
+                        {panierJSON.map(r => 
+                            <Plat titre={r.titre} prix={r.prix} description={r.description} urlImage={r.urlImage} />
+                        )}
+                    </ScrollView>
                 </View>
             </View>
         </View>

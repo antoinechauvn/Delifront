@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, SafeAreaView, 
+import { View, Text, Button, StyleSheet, SafeAreaView, ImageBackground,
     ScrollView, Dimensions } from 'react-native';
 import AppHeader from '../components/AppHeader';
+import Plat from '../components/Plat';
 
 const listePanier = ['pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson', 'pasta', 'salade', 'dessert', 'boisson', 'pizza', 'pasta', 'salade', 'dessert', 'boisson'];
-const panierJSON = [{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":'../assets/pizza1.png'},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":'../assets/pizza1.png'}]
+const panierJSON = [{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/pates.jpg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")},{"id":"5555", "titre":'pizza',"prix":10,"categorie":'gras',"description":'la pizza dela mama',"allergène":["gluten"],"urlImage":require("../assets/plats/boeufb.jpeg")}];
+const prixTotal = panierJSON.reduce((total, plat) => total + plat.prix, 0);
 const hauteur = Dimensions.get('window').height;
 console.log(hauteur);
 export default function Panier({ navigation }) {
@@ -13,21 +15,15 @@ export default function Panier({ navigation }) {
         <AppHeader title="Panier" navigation={navigation} />
           <View style={styles.panierBox}>
               <View style={styles.scrollBox}>
+                  <Text style={{fontSize:25,marginBottom:10}}>Voici votre panier: </Text>
                   <ScrollView>
-                      {panierJSON.map(r => {
-                      <View>
-                        <Text>{r.titre}</Text>
-                        <Text>{r.prix}</Text>
-                        <Text>{r.categorie}</Text>
-                        <Text>{r.description}</Text>
-                        <Text>{r.description}</Text>
-                        <Image style={styles.productImage} source={require(r.urlImage)}/>
-                      </View>
-                      })}
+                      {panierJSON.map(r => 
+                        <Plat titre={r.titre} prix={r.prix} description={r.description} urlImage={r.urlImage} />
+                      )}
                   </ScrollView>
               </View>
               <View style={styles.footer}>
-                <Text>Sous-total test : 0€</Text>
+                <Text>Sous-total : {prixTotal}€</Text>
                 <Button title="Valider" ></Button>
               </View>
           </View>
