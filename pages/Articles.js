@@ -18,7 +18,6 @@ export default function Articles({ navigation }) {
             {/* Liste des Articles */}
             <View>
                 <ItemArticle title="Oeuf Mimosa" imagepath={require('../assets/entrees/oeuf.png')} onPress={() => { navigation.navigate('Articles');}}></ItemArticle>
-
             </View>
         </View>
     </View>
