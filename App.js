@@ -6,6 +6,7 @@ import LoginScreen from './pages/Login';
 import Details from './components/Details';
 import Panier from './pages/Panier';
 import CloneHome from './pages/CloneHome';
+import Articles from './pages/Articles'
 
 
 const Stack = createNativeStackNavigator();
@@ -18,6 +19,7 @@ function App() {
         <Stack.Screen name="CloneHome" component={CloneHome} options={{ headerShown: false }}/>
         <Stack.Screen name="Details" component={Details} options={{ headerShown: false }}/>
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Articles" component={Articles} options={{ headerShown: false }}/>
         <Stack.Screen name="Panier" component={Panier} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
