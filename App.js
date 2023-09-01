@@ -5,7 +5,7 @@ import axios from 'axios';
 import LoginScreen from './pages/Login';
 import Details from './components/Details';
 import Panier from './pages/Panier';
-import CloneHome from './pages/Home';
+import HomeScreen from './pages/Home';
 import Articles from './pages/Articles';
 import {CartProvider} from './utils/CartContext';
 
@@ -33,7 +33,6 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Login" >
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
-          <Stack.Screen name="CloneHome" component={CloneHome} options={{ headerShown: false }}/>
           <Stack.Screen name="Details" component={Details} options={{ headerShown: false }}/>
           <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
           <Stack.Screen name="Articles" component={Articles} options={{ headerShown: false }}/>
