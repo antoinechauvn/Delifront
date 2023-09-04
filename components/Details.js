@@ -1,27 +1,34 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Image, Button} from 'react-native';
 import {  useFonts, Montserrat_700Bold, Montserrat_500Medium } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 import CustomButton from './CustomButton';
 import { useCartContext } from '../utils/CartContext';
 import AppHeader from '../components/AppHeader';
+import products from '../utils/ProductsData';
+import { useState } from 'react';
 
 
 export default function Details({ navigation, route }) {
   const { index } = route.params;
   const { addToCart } = useCartContext();
+  const { removeFromCart } = useCartContext();
 
-  const jsonData = [
-    {
-      "id": 1,
-      "titre": "Produit A",
-      "prix": 10.99,
-      "catégorie": "Alimentation",
-      "description": "Un délicieux produit",
-      "allergene": ["gluten", "lactose"]
-    },
-  ];
-  const product = jsonData[0];
+  const [quantity, setQuantity] = useState(0); // État local pour la quantité
+
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+    addToCart(product);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+      removeFromCart(product.id);
+    }
+  };
+  
+  const product = products[index];
 
 
   let [fontsLoaded] = useFonts({
@@ -44,19 +51,19 @@ export default function Details({ navigation, route }) {
 
         <View style={styles.titlesWrapper}>
           <Text style={styles.title}>
-          {product.titre}
+          {product.title}
           </Text>
         </View>
 
         <View style={styles.priceWrapper}>
-          <Text style={styles.priceText}>{product.prix} €</Text>
+          <Text style={styles.priceText}>{product.price} €</Text>
         </View>
 
         <View style={styles.infoWrapper}>
           <View style={styles.infoLeftWrapper}>
             <View style={styles.infoItemWrapper}>
               <Text style={styles.infoItemTitle}>Categorie</Text>
-              <Text style={styles.infoItemText}>{product.catégorie}</Text>
+              <Text style={styles.infoItemText}>{product.category}</Text>
             </View>
 
             <View style={styles.infoItemWrapper}>
@@ -67,15 +74,23 @@ export default function Details({ navigation, route }) {
 
             <View style={styles.infoItemWrapper}>
               <Text style={styles.infoItemTitle}>Allergène</Text>
-              <Text style={styles.infoItemText}>{product.allergene.join(', ')}</Text>
+              <Text style={styles.infoItemText}>{product.allergens.join(', ')}</Text>
             </View>
           </View>
           <View>
             <Image source={require('../assets/plats/pizza1.png')} style={styles.itemPicture} />
           </View>
         </View>
-        <CustomButton title='Acheter' onPress={() => addToCart(product)} style={styles.buyButton}>
-        </CustomButton>
+        <View>
+          {quantity == 0 && <CustomButton title='Acheter' onPress={() => { addToCart(product); handleIncrement(); }} style={styles.buyButton}>
+          </CustomButton>}
+          {quantity > 0 && <View style={styles.rowContainer}>
+              <Button title='-' style={styles.editButton} onPress={() => handleDecrement()}></Button>
+              <Text>{quantity}</Text>
+              <Button title='+' style={styles.editButton} onPress={() => handleIncrement()}></Button>
+            </View>
+            }
+        </View>
       </View>
       );
 }
@@ -133,6 +148,24 @@ const styles = new StyleSheet.create({
   },
   buyButton: {
     marginHorizontal: 40
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
+  },
+  editButton: {
+    width: 40,
+    height: 40,
+    borderRadius: '50%',
+    backgroundColor: '#007bff',
+    color: 'white',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 18,
+    cursor: 'pointer',
+    margin: 5,
   }
 }
 )

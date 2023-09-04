@@ -33,10 +33,7 @@ export default function Panier({ navigation }) {
                   <Text style={{fontSize:25,marginBottom:10}}>Voici votre panier: </Text>
                   <ScrollView>
                       {uniqueProducts.map((product) => 
-                      <Plat titre={product.titre} prix={productQuantities[product.id]*product.prix} description={product.description} urlImage={require("../assets/plats/pates.jpg")} quantiti={productQuantities[product.id]} />
-                      )}
-                      {panierJSON.map(r => 
-                        <ItemArticle title="Oeuf Mimosa" imagepath={require('../assets/entrees/oeuf.png')} onPress={() => { navigation.navigate('Articles');}}></ItemArticle>
+                      <ItemArticle article={product} prix={productQuantities[product.id]*product.prix} description={product.description} urlImage={require("../assets/plats/pates.jpg")} quantiti={productQuantities[product.id]} />
                       )}
                   </ScrollView>
               </View>

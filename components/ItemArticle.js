@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity } from 'r
 import { useFonts, Montserrat_700Bold, Montserrat_500Medium } from '@expo-google-fonts/montserrat';
 import AppLoading from 'expo-app-loading';
 
-export default function ItemArticle({ title, imagepath, onPress }) {
+export default function ItemArticle({ article, imagepath, onPress }) {
   let [fontsLoaded] = useFonts({
     Montserrat_700Bold,
     Montserrat_500Medium,
@@ -12,7 +12,6 @@ export default function ItemArticle({ title, imagepath, onPress }) {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity onPress={onPress}>
@@ -22,10 +21,10 @@ export default function ItemArticle({ title, imagepath, onPress }) {
         {/* Texte pour décrire l'article */}
         <View style={styles.label}>
           <View style={styles.rowContainer}>
-            <Text style={styles.articleTitle}>Plat: {title}</Text>
-            <Text style={styles.articlePrice}>Prix: 10$</Text>
+            <Text style={styles.articleTitle}>Plat: {article.title}</Text>
+            <Text style={styles.articlePrice}>Prix: {article.price} €</Text>
           </View>
-          <Text style={styles.articleDesc}>Description: {title}</Text>
+          <Text style={styles.articleDesc}>Description: {article.description}</Text>
         </View>
       </TouchableOpacity>
     </SafeAreaView>
