@@ -12,7 +12,7 @@ Afin d'executer le projet nous auront besoin des packages suivants:
 Dans un premier temps nous allons installer toutes les dépendances nécessaires avec la commande suivante:
 `npm install`
 
-Suite à cela nous pouvons choisir d'executer l'application sous différent support:
+Suite à cela nous pouvons choisir d'executer l'application sous différents supports:
 * `npm run web` afin d'executer sur navigateur
 * `npm run android` afin d'executer sur android avec l'application ExpoGo
 * `npm run ios` afin d'executer sur ios avec l'application ExpoGo
